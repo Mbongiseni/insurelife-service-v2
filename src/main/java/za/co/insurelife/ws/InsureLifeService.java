@@ -1,5 +1,8 @@
 package za.co.insurelife.ws;
 
+import za.co.insurelife.ws.messages.GetAllClientsDetailsResponse;
+
+import javax.jws.WebResult;
 import javax.jws.WebService;
 
 /*
@@ -8,5 +11,7 @@ import javax.jws.WebService;
  */
 @WebService(name="InsureLifeService")
 public interface InsureLifeService {
-    GetAllClientsResponse
+
+    @WebResult(name = "GetAllClientsDetailsResponse")
+    GetAllClientsDetailsResponse retrieveAllClientsDetails();
 }

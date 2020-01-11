@@ -81,6 +81,6 @@
         </configuration>
       </plugin>
     </plugins>
-    <finalName>insure-life-service</finalName>
+    <finalName>insurelifeservice</finalName>
   </build>
 </project>
