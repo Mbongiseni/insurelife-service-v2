@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:cxf="http://cxf.apache.org/core" xmlns:soap="http://cxf.apache.org/bindings/soap"
+       xmlns:cfx="http://cxf.apache.org/core"
+       xsi:schemaLocation="http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <jaxws:server id="insureLifeService" serviceClass="za.co.insurelife.ws.InsureLifeService" address="/insure-life-services">
+        <jaxws:serviceBean>
+            <bean class="za.co.insurelife.ws.InsureLifeServiceImpl"/>
+        </jaxws:serviceBean>
+    </jaxws:server>
+
+    <!-- ENABLES APACHE CFX LOGGING -->
+    <cfx:bus>
+        <cxf:features>
+            <cxf:logging></cxf:logging>
+        </cxf:features>
+    </cfx:bus>
+
+</beans>
