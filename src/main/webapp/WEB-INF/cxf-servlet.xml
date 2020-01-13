@@ -5,11 +5,29 @@
        xmlns:cfx="http://cxf.apache.org/core"
        xsi:schemaLocation="http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
 
+    <!-- Webservice Endpoint configuration -->
     <jaxws:server id="insureLifeService" serviceClass="za.co.insurelife.ws.InsureLifeService" address="/insure-life-services">
         <jaxws:serviceBean>
             <bean class="za.co.insurelife.ws.InsureLifeServiceImpl"/>
         </jaxws:serviceBean>
+
+        <!-- Username Token Authentication Configuration -->
+        <jaxws:inInterceptors> <!-- Specifies a list of interceptors to process incoming requests -->
+            <bean class="org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor">
+                <!-- Configuration information for WSS4JInterceptor as a Map -->
+                <constructor-arg>
+                    <map>
+                        <entry key="action" value="UsernameToken"/> <!-- Security Action-->
+                        <entry key="passwordType" value="PasswordText"/>    <!-- Security Password Types-->
+                        <entry key="passwordCallbackRef" value-ref="myPasswordCallback"/>   <!-- Security Call Back Class-->
+                    </map>
+                </constructor-arg>
+            </bean>
+        </jaxws:inInterceptors>
     </jaxws:server>
+
+    <!-- PasswordCallbackHandler Configuration -->
+    <bean id="myPasswordCallback" class="za.co.insurelife.ws.security.PasswordCallbackHandler"/>
 
     <!-- ENABLES APACHE CFX LOGGING -->
     <cfx:bus>
