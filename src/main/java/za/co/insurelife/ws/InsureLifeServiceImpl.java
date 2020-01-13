@@ -3,12 +3,15 @@ package za.co.insurelife.ws;
 import za.co.insurelife.ws.messages.ClientDetails;
 import za.co.insurelife.ws.messages.GetAllClientsDetailsResponse;
 
+import javax.jws.WebMethod;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class InsureLifeServiceImpl implements InsureLifeService {
+
     @Override
+    @WebMethod(operationName = "GetAllClientsDetails")
     public GetAllClientsDetailsResponse retrieveAllClientsDetails() {
         GetAllClientsDetailsResponse response = new GetAllClientsDetailsResponse();
         response.setClientDetails(getAllClientDetails());

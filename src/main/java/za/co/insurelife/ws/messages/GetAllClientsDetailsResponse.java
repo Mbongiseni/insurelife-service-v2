@@ -1,13 +1,11 @@
 package za.co.insurelife.ws.messages;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {"clientDetails"})
+@XmlRootElement(name = "GetAllClientsDetailsResponse")
 public class GetAllClientsDetailsResponse {
 
     @XmlElement(name = "ClientDetails", required = true)
